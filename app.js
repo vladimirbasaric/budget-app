@@ -186,6 +186,7 @@ let UIController = (function(){
             }
         },
 
+        // exposing DOMstrings to public
         getDOMstrings: function() {
             return DOMstrings;
         }
@@ -198,13 +199,16 @@ let UIController = (function(){
 let controller = (function(budgetCtrl, UICtrl) {
 
     let setupEventListeners = function() {
+
+        // in this variable I store DOMstrings from UI Controler, and Now I can use them in this controller
         let DOM = UICtrl.getDOMstrings();
 
         document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 
+        // this EventListener is for global document
         document.addEventListener('keypress', function(e){
             
-            if (e.key === 13 || e.which === 13) {
+            if (e.key === 13 || e.which === 13) {// e.which is for older browsers
                 ctrlAddItem();
             }
         });
