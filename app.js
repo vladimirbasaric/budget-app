@@ -35,8 +35,13 @@ let budgetController = (function(){
     };
 
     return {
+        // this method is pased to main controller to ctrlAddItem -> newItem
         addItem: function(type, des, val) {
             let newItem, ID;
+
+            // [1 2 3 4 5], next ID = 6
+            // [1 2 4 6 8], next ID = 9
+            // ID = last ID + 1
 
             // Create new ID
             if (data.allItems[type].length > 0) {
@@ -76,6 +81,7 @@ let budgetController = (function(){
             }
         },
 
+        // this metod just retuns data to be available to other modules
         getBudget: function() {
             return {
                 budget: data.budget,
@@ -155,7 +161,7 @@ let UIController = (function(){
             newHtml = newHtml.replace('%value%', obj.value);
 
             // Insert the HTML into the DOM
-            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml)
+            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
         },
 
@@ -186,7 +192,7 @@ let UIController = (function(){
             }
         },
 
-        // exposing DOMstrings to public
+        // exposing DOMstrings object to public
         getDOMstrings: function() {
             return DOMstrings;
         }
