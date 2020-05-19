@@ -310,9 +310,10 @@ let UIController = (function(){
         changedType: function() {
 
             let fields = document.querySelectorAll(
-                DOMstrings.inputType + ',' +
-                DOMstrings.inputDescription + ',' +
-                DOMstrings.inputValue );
+                `${DOMstrings.inputType},
+                 ${DOMstrings.inputDescription},
+                 ${DOMstrings.inputValue}` 
+                 );
 
                 nodeListForEach(fields, function(cur){
                 cur.classList.toggle('red-focus');
